@@ -35,15 +35,13 @@ class _MasterDetailScreenState extends State<MasterDetailScreen> {
   @override
   void initState() {
     super.initState();
-    selectedItem = items.first; // กำหนดค่าเริ่มต้นให้แสดงรายการแรกในจอกว้าง
+    selectedItem = items.first;
   }
 
   void _onItemSelect(String item, bool isWide) {
     setState(() {
       selectedItem = item;
     });
-
-    // หากเป็นจอแคบ กดแล้วจะเปิดหน้าใหม่ (Navigate)
     if (!isWide) {
       Navigator.push(
         context,
@@ -83,8 +81,6 @@ class _MasterDetailScreenState extends State<MasterDetailScreen> {
               ],
             );
           }
-
-          // จอแคบ: แสดงเฉพาะรายการ
           return ItemList(
             items: items,
             selectedItem: selectedItem,
@@ -96,7 +92,6 @@ class _MasterDetailScreenState extends State<MasterDetailScreen> {
   }
 }
 
-// Widget สำหรับแสดงรายการฝั่งซ้าย (ItemList)
 class ItemList extends StatelessWidget {
   final List<String> items;
   final String? selectedItem;
@@ -128,7 +123,6 @@ class ItemList extends StatelessWidget {
   }
 }
 
-// Widget สำหรับแสดงรายละเอียดฝั่งขวา (DetailPane)
 class DetailPane extends StatelessWidget {
   final String? item;
 
@@ -160,8 +154,6 @@ class DetailPane extends StatelessWidget {
     );
   }
 }
-
-// หน้าสำหรับแสดงรายละเอียดในกรณีจอแคบ (เปิดเป็นหน้าใหม่)
 class DetailPage extends StatelessWidget {
   final String item;
 
